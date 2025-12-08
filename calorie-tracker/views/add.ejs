@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Food - Calorie Tracker</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header>
+    <h1>Calorie Tracker</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/about">About</a> |
+        <a href="/add">Add Food</a> |
+        <a href="/search">Search</a> |
+        <a href="/day">View by Date</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Add a food</h2>
+
+    <% if (error) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+
+    <form action="/add" method="POST">
+        <label for="food_name">Food description:</label>
+        <input type="text" id="food_name" name="food_name" placeholder="e.g. Chicken breast 200g" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <p>The app will look up an approximate calorie value for the food you enter.</p>
+</main>
+</body>
+</html>

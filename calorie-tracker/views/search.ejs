@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search - Calorie Tracker</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header>
+    <h1>Calorie Tracker</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/about">About</a> |
+        <a href="/add">Add Food</a> |
+        <a href="/search">Search</a> |
+        <a href="/day">View by Date</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Search your entries</h2>
+
+    <form method="GET" action="/search">
+        <input type="text" name="q" placeholder="Search by food name" value="<%= query %>">
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (query) { %>
+        <h3>Results for "<%= query %>":</h3>
+
+        <% if (results.length === 0) { %>
+            <p>No matching entries found.</p>
+        <% } else { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food</th>
+                        <th>Calories</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% results.forEach(food => { %>
+                        <tr>
+                            <td><%= food.food_name %></td>
+                            <td><%= food.calories %> kcal</td>
+                            <td><%= food.created_at.toLocaleString ? food.created_at.toLocaleString() : food.created_at %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    <% } %>
+</main>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calorie Tracker - Home</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Calorie Tracker</h1>
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/about">About</a> |
+            <a href="/add">Add Food</a> |
+            <a href="/search">Search</a> |
+            <a href="/day">View by Date</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Today's Entries</h2>
+
+        <% if (foods.length === 0) { %>
+            <p>No foods logged today yet.</p>
+        <% } else { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food</th>
+                        <th>Calories per 100g unless specified</th>
+                        <th>Time added</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% foods.forEach(food => { %>
+                        <tr>
+                            <td><%= food.food_name %></td>
+                            <td><%= food.calories %> kcal</td>
+                            <td><%= food.created_at.toLocaleString ? food.created_at.toLocaleString() : food.created_at %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+
+        <h3>Total calories today: <%= totalCalories %> kcal</h3>
+    </main>
+</body>
+</html>

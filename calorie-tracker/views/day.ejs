@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View by Date - Calorie Tracker</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header>
+    <h1>Calorie Tracker</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/about">About</a> |
+        <a href="/add">Add Food</a> |
+        <a href="/search">Search</a> |
+        <a href="/day">View by Date</a>
+    </nav>
+</header>
+
+<main>
+    <h2>View entries by date</h2>
+
+    <form method="GET" action="/day">
+        <label for="date">Select date:</label>
+        <input type="date" id="date" name="date" value="<%= date %>">
+        <button type="submit">View</button>
+    </form>
+
+    <h3>Entries for <%= date %></h3>
+
+    <% if (foods.length === 0) { %>
+        <p>No entries for this date.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Food</th>
+                    <th>Calories</th>
+                    <th>Time added</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% foods.forEach(food => { %>
+                    <tr>
+                        <td><%= food.food_name %></td>
+                        <td><%= food.calories %> kcal</td>
+                        <td><%= food.created_at.toLocaleString ? food.created_at.toLocaleString() : food.created_at %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+
+    <h3>Total calories: <%= totalCalories %> kcal</h3>
+</main>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Environment variables (API keys, DB passwords, etc.)
+.env
+
+# MacOS junk
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor folders
+.vscode/
+.idea/
+
+# System files
+Thumbs.db
+
+
